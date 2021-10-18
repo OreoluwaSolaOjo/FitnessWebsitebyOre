@@ -1,0 +1,26 @@
+{% extends 'plans/base.html' %}
+{% block content %}
+<div class="container">
+    {% if membership %}
+    <div style="width:100%;height:0;padding-bottom:60%;position:relative;"><iframe
+            src="https://giphy.com/embed/10tIjpzIu8fe0" width="100%" height="100%" style="position:absolute"
+            frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
+    <p><a href="https://giphy.com/gifs/inside-out-gif-10tIjpzIu8fe0">via GIPHY</a></p>
+
+    <div class="text-center">
+        <h2>So sad to see you go</h2>
+        <form style="font-size: large;" action="{% url 'settings' %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Cancel Membership">
+        </form>
+        <br>
+        <br>
+    </div>
+
+    {% elif cancel_at_period_end %}
+    Your membership will run to the end of your billing cycle.
+    {% else %}
+    <a href="{% url 'join' %}">Get a membership</a>
+    {% endif %}
+</div>
+{% endblock %}

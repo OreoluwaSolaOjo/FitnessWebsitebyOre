@@ -1,0 +1,39 @@
+{% extends 'plans/base.html' %}
+{% block content %}
+{% load static %}
+<div>
+  <div class="containerrr">
+    <img src="{% static 'fitness.jpg' %}" class="img-fluid" alt="My Image">
+    <div class="centered">
+      <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+
+        <h1 class="display-4">Fitness by Ore</h1>
+
+        <p class="lead">Fitness Is exciting</p>
+
+        <a href="{% url 'join' %}"><button type="button" class="btn btn-lg btn-primary">Get Premium</button></a>
+      </div>
+    </div>
+  </div>
+  <!-- 
+  <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+
+    <h1 class="display-4">Fitness by Ore</h1>
+    <p class="lead">Fitness Is exciting</p>
+    <a href="{% url 'join' %}"><button type="button" class="btn btn-lg btn-primary">Get Premium</button></a>
+  </div> -->
+  <br>
+  <br>
+  <div class="container col align-items-center" style=" max-width: fit-content;">
+    <div>
+      <h3 style="text-align: center;">Trending Articles</h3>
+      <ul>
+        {% for plan in plans.all %}
+
+        <li class="lead"><a href="{% url 'plan' plan.id %}">{{ plan.title }}</a></li>
+
+        {% endfor %}
+    </div>
+    </ul>
+  </div>
+  {% endblock %}
